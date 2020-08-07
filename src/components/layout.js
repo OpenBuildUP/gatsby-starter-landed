@@ -1,8 +1,8 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import '../assets/scss/main.scss'
-import Header from './Header'
-import Footer from './Footer'
+import Header from './header'
+import Footer from './footer'
 
 const Layout = ({ children, ...props }) => (
   <StaticQuery
@@ -19,10 +19,10 @@ const Layout = ({ children, ...props }) => (
               items {
                 link
                 name
-                items {
-                  link
-                  name
-                }
+                # items {
+                #   link
+                #   name
+                # }
               }
             }
           }
@@ -34,6 +34,7 @@ const Layout = ({ children, ...props }) => (
         <div className={props.location == '/' ? 'landing' : ''}>
           <div id="page-wrapper">
             <Header
+              location={props.location}
               menuLinks={data.site.siteMetadata.menuLinks}
               siteTitle={data.site.siteMetadata.title}
             />

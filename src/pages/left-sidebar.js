@@ -5,7 +5,7 @@ import pic05 from '../assets/images/pic05.jpg'
 import pic06 from '../assets/images/pic06.jpg'
 
 const LeftSidebar = props => (
-  <Layout>
+  <Layout location='/left-sidebar'>
     <Helmet>
       <title>Left Sidebar - Landed by HTML5 UP</title>
       <meta name="description" content="Left Sidebar Page" />

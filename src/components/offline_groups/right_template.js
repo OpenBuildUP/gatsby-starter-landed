@@ -1,11 +1,11 @@
 import React from 'react'
-import pic03 from '../assets/images/pic03.jpg'
+import pic03 from '../../assets/images/pic03.jpg'
 import { Link as ScrollLink } from 'react-scroll'
 import Fade from 'react-reveal/Fade'
 
-const Two = props => (
+const One = props => (
   <section
-    id="two"
+    id="one"
     className="spotlight style2 right inactive"
     style={{ backgroundImage: `url(${pic03})` }}
   >
@@ -34,7 +34,7 @@ const Two = props => (
       </div>
     </Fade>
     <ScrollLink
-      to="three"
+      to= {props.next}
       className="goto-next"
       activeClass="active"
       smooth={true}
@@ -47,4 +47,4 @@ const Two = props => (
   </section>
 )
 
-export default Two
+export default One

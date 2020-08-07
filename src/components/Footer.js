@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = props => (
   <footer id="footer">
-    <ul className="icons">
+    {/* <ul className="icons">
       <li>
         <a href="/" className="icon brands alt fa-twitter">
           <span className="label">Twitter</span>
@@ -33,9 +33,9 @@ const Footer = props => (
           <span className="label">Email</span>
         </a>
       </li>
-    </ul>
+    </ul> */}
     <ul className="copyright">
-      <li>&copy; Untitled. All rights reserved.</li>
+      <li>&copy; Open Build-UP. All rights reserved.</li>
       <li>
         Design: <a href="http://html5up.net">HTML5 UP</a>
       </li>

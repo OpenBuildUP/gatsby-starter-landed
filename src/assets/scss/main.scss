@@ -724,10 +724,15 @@
 			cursor: default;
 			display: inline-block;
 			height: 6em;
-			line-height: 5.65em;
+			// line-height: 5.65em;
+			line-height: 7em;
 			margin: 0 0 _size(element-margin) 0;
 			text-align: center;
 			width: 6em;
+
+			&.svg-line-height-9em {
+				line-height: 9em;
+			}
 
 			&:before {
 				font-size: 2.25em;
@@ -1463,7 +1468,8 @@
 	}
 
 	#header {
-		background: _palette(accent2-transparent);
+		//background: _palette(accent2-transparent);
+		background: rgba(23, 24, 32, 0);
 		box-shadow: 0 0 0.25em 0 rgba(0,0,0,0.25);
 		cursor: default;
 		height: 3.5em;
@@ -1536,7 +1542,7 @@
 		#header {
 			background: transparent;
 			box-shadow: none;
-			position: absolute;
+			//position: absolute;
 		}
 	}
 
@@ -1563,7 +1569,7 @@
 		}
 
 		&:after {
-			@include vendor('background-image', ('linear-gradient(top, #{_palette(bg-transparent)}, #{_palette(bg-transparent)})', 'url("../css/images/overlay.png");'));
+			@include vendor('background-image', ('linear-gradient(#{_palette(bg-transparent)}, #{_palette(bg-transparent)})', 'url("../css/images/overlay.png");'));
 			content: '';
 			display: block;
 			height: 100%;
@@ -2070,7 +2076,7 @@
 				}
 			}
 
-			body .navPanel-visible {	
+			body .navPanel-visible {
 				/*	#page-wrapper {
 						@include vendor('transform', 'translateX(#{_size(navPanel)})');
 					}*/

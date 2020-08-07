@@ -1,63 +1,99 @@
 module.exports = {
   //pathPrefix: `/mygatsby`,
   siteMetadata: {
-    title: 'Landed',
-    author: 'vasrush',
-    description: 'A Gatsby.js V2 Starter based on Landed by HTML5 UP',
+    title: 'Open Build-UP',
+    author: 'Open Build-UP',
+    description: 'A Gatsby.js V2 Starter based on Open Build-UP by HTML5 UP',
+
+    // 2차 내부 메뉴까지 작성 가능!
+    // layout.graphql 수정이 필요 && 아래 scaffold layout 참고! (ex. menuLinks.item.items.items)
     menuLinks: [
+      // Real Layout!
       {
-        name: 'Home',
-        link: '/',
-      },
-      {
-        name: 'Layouts',
+        name: 'Offline Groups',
         link: '#',
+        cl: '',
         items: [
           {
-            name: 'Left Sidebar',
-            link: '/left-sidebar',
-          },
-          {
-            name: 'Right Sidebar',
-            link: '/right-sidebar',
-          },
-          {
-            name: 'No Sidebar',
-            link: '/no-sidebar',
-          },
-          {
-            name: 'SubMenu',
-            link: '#',
-            items: [
-              {
-                name: 'Option 1',
-                link: '#',
-              },
-              {
-                name: 'Option 2',
-                link: '#',
-              },
-              {
-                name: 'Option 3',
-                link: '#',
-              },
-              {
-                name: 'Option 4',
-                link: '#',
-              },
-            ],
+            name: 'Daegu',
+            link: '/offline_groups/daegu',
           },
         ],
       },
       {
-        name: 'Elements',
-        link: '/elements',
-      },
-      {
-        name: 'Sign Up',
+        name: 'Online Groups',
         link: '#',
-        cl: 'button primary',
+        items: [
+          {
+            name: 'Facebook',
+            link: 'https://www.facebook.com/groups/openbuildup',
+          },
+          {
+            name: 'Kakao',
+            link: 'https://open.kakao.com/o/gzRiCIoc',
+          },
+        ],
       },
+      // Scaffold Layout!
+      // {
+      //   name: '',
+      //   link: '#',
+      //   cl: '', // ex. 'button primary',
+      //   items: [
+      //     {
+      //       name: '',
+      //       link: '#',
+      //       items: [
+      //         {
+      //           name: '',
+      //           link: '#',
+      //         },
+      //       ],
+      //     },
+      //   ],
+      // },
+
+      // Default
+      // {
+      //   name: 'Layouts',
+      //   link: '#',
+      //   items: [
+      //     {
+      //       name: 'Left Sidebar',
+      //       link: '/left-sidebar',
+      //     },
+      //     {
+      //       name: 'Right Sidebar',
+      //       link: '/right-sidebar',
+      //     },
+      //     {
+      //       name: 'No Sidebar',
+      //       link: '/no-sidebar',
+      //     },
+      //     {
+      //       name: 'SubMenu',
+      //       link: '#',
+      //       items: [
+      //         {
+      //           name: 'Option 1',
+      //           link: '#',
+      //         },
+      //         {
+      //           name: 'Option 2',
+      //           link: '#',
+      //         },
+      //         {
+      //           name: 'Option 3',
+      //           link: '#',
+      //         },
+      //         {
+      //           name: 'Option 4',
+      //           link: '#',
+      //         },
+      //       ],
+      //     },
+      //   ],
+      // },
     ],
   },
   plugins: [
@@ -71,13 +107,13 @@ module.exports = {
         background_color: '#663399',
         theme_color: '#663399',
         display: 'minimal-ui',
-        icon: 'src/assets/images/website-icon.png', // This path is relative to the root of the site.
+        icon: 'src/assets/images/favicon.png', // This path is relative to the root of the site.
       },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/src/images/`,
+        path: `${__dirname}/src/assets/images/`,
         name: 'images',
       },
     },
