@@ -8,12 +8,13 @@ const Banner = props => (
       <header>
         <h2>Open Build-UP</h2>
         <p>
-        "아이디어 공유/평가를 받기위한"
+          "아이디어 공유/평가를 받기위한"
+          <mobileBr style={{ color: `#e44c65` }}>&nbsp;&&nbsp;</mobileBr>
           <br />
-          "다양한 전문가들과 팀프로젝트, 팀 빌딩을 위한"
+          "다양한 전문가들과 팀프로젝트, 팀 빌딩을 위한"&nbsp;
+          <mobileBr style={{ color: `#e44c65` }}>&nbsp;&&nbsp;</mobileBr>
           <br />
-          "직장인, 학생, 누구나 함께 모여 소통하고 협업할 수 있는"
-          <br />
+          "직장인, 학생, 누구나 함께 모여 소통하고 협업할 수 있는"&nbsp;
         </p>
       </header>
       <span className="image">

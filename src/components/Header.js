@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from 'react';
-import { Link } from 'gatsby';
-import { Link as ScrollLink } from 'react-scroll';
-import MobileMenu from './mobile_menu';
+import React, { useEffect, useRef } from 'react'
+import { Link } from 'gatsby'
+import { Link as ScrollLink } from 'react-scroll'
+import MobileMenu from './mobile_menu'
 
 const timeoutLength = 300
 
@@ -20,30 +20,31 @@ class Header extends React.Component {
   }
 
   componentDidMount() {
-    this.listener = document.addEventListener("scroll", e => {
-      let scrolled = document.scrollingElement.scrollTop;
-      let deltaScrolled = 100;
-      let limitScrolled = this.props.location === '/' ? window.innerHeight : 56.0;
-      let startScrolled = limitScrolled - deltaScrolled;
+    this.listener = document.addEventListener('scroll', e => {
+      let scrolled = document.scrollingElement.scrollTop
+      let deltaScrolled = 100
+      let limitScrolled =
+        this.props.location === '/' ? window.innerHeight : 56.0
+      let startScrolled = limitScrolled - deltaScrolled
 
       //backgroundStyle: rgba(23, 24, 32, (startScrolled - scrolled) / 100);
       if (scrolled >= startScrolled) {
-        let alphaValue = 1.0 - ((limitScrolled - scrolled) / deltaScrolled);
-        let rgbaStyle = `rgba(23, 24, 32, ${alphaValue})`;
+        let alphaValue = 1.0 - (limitScrolled - scrolled) / deltaScrolled
+        let rgbaStyle = `rgba(23, 24, 32, ${alphaValue})`
         if (this.state.backgroundStyle !== rgbaStyle) {
-          this.setState({ backgroundStyle: rgbaStyle });
+          this.setState({ backgroundStyle: rgbaStyle })
         }
       } else {
         if (this.state.backgroundStyle !== '') {
-          this.setState({ backgroundStyle: '' });
+          this.setState({ backgroundStyle: '' })
         }
       }
-    });
+    })
   }
 
   componentDidUpdate() {
-    document.removeEventListener("scroll", this.listener);
-  };
+    document.removeEventListener('scroll', this.listener)
+  }
 
   toggleHamburger = () => {
     this.setState(
@@ -63,84 +64,99 @@ class Header extends React.Component {
     )
   }
 
-  enterButton = (linkName) => {
+  enterButton = linkName => {
     this.setState({
-      mouseOverButtons: this.state.mouseOverButtons.filter(name => name !== linkName).concat(linkName),
-    });
+      mouseOverButtons: this.state.mouseOverButtons
+        .filter(name => name !== linkName)
+        .concat(linkName),
+    })
   }
 
-  leaveButton = (linkName) => {
+  leaveButton = linkName => {
     setTimeout(() => {
       this.setState({
-        mouseOverButtons: this.state.mouseOverButtons.filter(name => name !== linkName),
-      });
-    }, timeoutLength);
-  }
-
-  enterMenu = (linkName) => {
-    this.setState({
-      mouseOverMenus: this.state.mouseOverMenus.filter(name => name !== linkName).concat(linkName),
-    });
-  }
-
-  leaveMenu = (linkName) => {
-    setTimeout(() => {
-      this.setState({
-        mouseOverMenus: this.state.mouseOverMenus.filter(name => name !== linkName),
-      });
+        mouseOverButtons: this.state.mouseOverButtons.filter(
+          name => name !== linkName
+        ),
+      })
     }, timeoutLength)
   }
 
-  enterSubButton = (sublinkName) => {
+  enterMenu = linkName => {
     this.setState({
-      mouseOverSubButtons: this.state.mouseOverSubButtons.filter(name => name !== sublinkName).concat(sublinkName),
-    });
+      mouseOverMenus: this.state.mouseOverMenus
+        .filter(name => name !== linkName)
+        .concat(linkName),
+    })
   }
 
-  leaveSubButton = (sublinkName) => {
+  leaveMenu = linkName => {
     setTimeout(() => {
       this.setState({
-        mouseOverSubButtons: this.state.mouseOverSubButtons.filter(name => name !== sublinkName),
-      });
+        mouseOverMenus: this.state.mouseOverMenus.filter(
+          name => name !== linkName
+        ),
+      })
     }, timeoutLength)
   }
 
-  enterSubMenu = (sublinkName) => {
+  enterSubButton = sublinkName => {
     this.setState({
-      mouseOverSubMenus: this.state.mouseOverSubMenus.filter(name => name !== sublinkName).concat(sublinkName),
-    });
+      mouseOverSubButtons: this.state.mouseOverSubButtons
+        .filter(name => name !== sublinkName)
+        .concat(sublinkName),
+    })
   }
 
-  leaveSubMenu = (sublinkName) => {
+  leaveSubButton = sublinkName => {
     setTimeout(() => {
       this.setState({
-        mouseOverSubMenus: this.state.mouseOverSubMenus.filter(name => name !== sublinkName),
-      });
+        mouseOverSubButtons: this.state.mouseOverSubButtons.filter(
+          name => name !== sublinkName
+        ),
+      })
     }, timeoutLength)
   }
 
-  openBlankTo = (to) => {
-    let trimedTo = to.trim();
-
-    console.log(`${to} -> ${trimedTo.indexOf('https://') === 0 || trimedTo.indexOf('http://') === 0}`);
-
-    return trimedTo.indexOf('https://') === 0 || trimedTo.indexOf('http://') === 0;
+  enterSubMenu = sublinkName => {
+    this.setState({
+      mouseOverSubMenus: this.state.mouseOverSubMenus
+        .filter(name => name !== sublinkName)
+        .concat(sublinkName),
+    })
   }
 
-  replaceTo = (to) => {
-    let trimedTo = to.trim();
+  leaveSubMenu = sublinkName => {
+    setTimeout(() => {
+      this.setState({
+        mouseOverSubMenus: this.state.mouseOverSubMenus.filter(
+          name => name !== sublinkName
+        ),
+      })
+    }, timeoutLength)
+  }
+
+  openBlankTo = to => {
+    let trimedTo = to.trim()
+    return (
+      trimedTo.indexOf('https://') === 0 || trimedTo.indexOf('http://') === 0
+    )
+  }
+
+  replaceTo = to => {
+    let trimedTo = to.trim()
 
     if (trimedTo === '#' || trimedTo === '/') {
-      return trimedTo;
+      return trimedTo
     }
 
-    return `${trimedTo.replace('/', '').replace(/\//gi, '_')}_banner`;
+    return `${trimedTo.replace('/', '').replace(/\//gi, '_')}_banner`
   }
 
   render() {
-    const siteTitle = this.props.siteTitle;
-    const menuLinks = this.props.menuLinks;
-    const isHome = this.props.location === '/';
+    const siteTitle = this.props.siteTitle
+    const menuLinks = this.props.menuLinks
+    const isHome = this.props.location === '/'
 
     return (
       <React.Fragment>
@@ -172,34 +188,41 @@ class Header extends React.Component {
                   link.items ? (
                     <React.Fragment key={link.name}>
                       <li key={link.name}>
-                        {isHome && !this.openBlankTo(link.link)
-                          ? <ScrollLink
-                              onMouseEnter={_ => this.enterButton(link.name)}
-                              onMouseLeave={_ => this.leaveButton(link.name)}
-                              className={`${link.cl}`}
-                              to={this.replaceTo(link.link)}
-                              smooth={true}
-                              offset={50}
-                              duration={1500}
-                              spy={true}
-                            >
-                              {link.name}
-                            </ScrollLink>
-                          : <Link
-                              onMouseEnter={_ => this.enterButton(link.name)}
-                              onMouseLeave={_ => this.leaveButton(link.name)}
-                              className={link.cl}
-                              to={link.link}
-                              target={`${this.openBlankTo(link.link) ? '_blank' : ''}`}
-                            >
-                              {link.name}
-                            </Link>
-                        }
+                        {isHome && !this.openBlankTo(link.link) ? (
+                          <ScrollLink
+                            onMouseEnter={_ => this.enterButton(link.name)}
+                            onMouseLeave={_ => this.leaveButton(link.name)}
+                            className={`${link.cl}`}
+                            to={this.replaceTo(link.link)}
+                            smooth={true}
+                            offset={50}
+                            duration={1500}
+                            spy={true}
+                          >
+                            {link.name}
+                          </ScrollLink>
+                        ) : (
+                          <Link
+                            onMouseEnter={_ => this.enterButton(link.name)}
+                            onMouseLeave={_ => this.leaveButton(link.name)}
+                            className={link.cl}
+                            to={link.link}
+                            target={`${
+                              this.openBlankTo(link.link) ? '_blank' : ''
+                            }`}
+                          >
+                            {link.name}
+                          </Link>
+                        )}
                         <ul
                           style={
                             //open
-                            this.state.mouseOverButtons.filter((name) => name === link.name).length > 0
-                              || this.state.mouseOverMenus.filter((name) => name === link.name).length > 0
+                            this.state.mouseOverButtons.filter(
+                              name => name === link.name
+                            ).length > 0 ||
+                            this.state.mouseOverMenus.filter(
+                              name => name === link.name
+                            ).length > 0
                               ? {
                                   display: `block`,
                                   background: `rgba(39, 40, 51, 0.965)`,
@@ -228,32 +251,49 @@ class Header extends React.Component {
                                     lineHeight: `2.5`,
                                   }}
                                 >
-                                  {isHome && !this.openBlankTo(sublink.link)
-                                    ? <ScrollLink
-                                        onMouseEnter={_ => this.enterSubButton(sublink.name)}
-                                        onMouseLeave={_ => this.leaveSubButton(sublink.name)}
-                                        to={this.replaceTo(sublink.link)}
-                                        smooth={true}
-                                        offset={50}
-                                        duration={1500}
-                                        spy={true}
-                                      >
-                                        {sublink.name}
-                                      </ScrollLink>
-                                    : <Link
-                                        onMouseEnter={_ => this.enterSubButton(sublink.name)}
-                                        onMouseLeave={_ => this.leaveSubButton(sublink.name)}
-                                        to={sublink.link}
-                                        target={`${this.openBlankTo(sublink.link) ? '_blank' : ''}`}
-                                      >
-                                        {sublink.name}
-                                      </Link>
-                                  }
+                                  {isHome && !this.openBlankTo(sublink.link) ? (
+                                    <ScrollLink
+                                      onMouseEnter={_ =>
+                                        this.enterSubButton(sublink.name)
+                                      }
+                                      onMouseLeave={_ =>
+                                        this.leaveSubButton(sublink.name)
+                                      }
+                                      to={this.replaceTo(sublink.link)}
+                                      smooth={true}
+                                      offset={50}
+                                      duration={1500}
+                                      spy={true}
+                                    >
+                                      {sublink.name}
+                                    </ScrollLink>
+                                  ) : (
+                                    <Link
+                                      onMouseEnter={_ =>
+                                        this.enterSubButton(sublink.name)
+                                      }
+                                      onMouseLeave={_ =>
+                                        this.leaveSubButton(sublink.name)
+                                      }
+                                      to={sublink.link}
+                                      target={`${
+                                        this.openBlankTo(sublink.link)
+                                          ? '_blank'
+                                          : ''
+                                      }`}
+                                    >
+                                      {sublink.name}
+                                    </Link>
+                                  )}
                                   <ul
                                     style={
                                       //subOpen
-                                      this.state.mouseOverSubButtons.filter((name) => name === sublink.name).length > 0
-                                        || this.state.mouseOverSubMenus.filter((name) => name === sublink.name).length > 0
+                                      this.state.mouseOverSubButtons.filter(
+                                        name => name === sublink.name
+                                      ).length > 0 ||
+                                      this.state.mouseOverSubMenus.filter(
+                                        name => name === sublink.name
+                                      ).length > 0
                                         ? {
                                             display: `block`,
                                             background: `rgba(39, 40, 51, 0.965)`,
@@ -265,8 +305,12 @@ class Header extends React.Component {
                                           }
                                         : { display: `none` }
                                     }
-                                    onMouseEnter={_ => this.enterSubMenu(sublink.name)}
-                                    onMouseLeave={_ => this.leaveSubMenu(sublink.name)}
+                                    onMouseEnter={_ =>
+                                      this.enterSubMenu(sublink.name)
+                                    }
+                                    onMouseLeave={_ =>
+                                      this.leaveSubMenu(sublink.name)
+                                    }
                                   >
                                     {sublink.items.map(nestedsublink => (
                                       <li
@@ -281,23 +325,35 @@ class Header extends React.Component {
                                           display: `block`,
                                         }}
                                       >
-                                        {isHome && !this.openBlankTo(nestedsublink.link)
-                                          ? <ScrollLink
-                                              to={this.replaceTo(nestedsublink.link)}
-                                              smooth={true}
-                                              offset={50}
-                                              duration={1500}
-                                              spy={true}
-                                            >
-                                              {nestedsublink.name}
-                                            </ScrollLink>
-                                          : <Link
-                                              to={nestedsublink.link}
-                                              target={`${this.openBlankTo(nestedsublink.link) ? '_blank' : ''}`}
-                                            >
-                                              {nestedsublink.name}
-                                            </Link>
-                                        }
+                                        {isHome &&
+                                        !this.openBlankTo(
+                                          nestedsublink.link
+                                        ) ? (
+                                          <ScrollLink
+                                            to={this.replaceTo(
+                                              nestedsublink.link
+                                            )}
+                                            smooth={true}
+                                            offset={50}
+                                            duration={1500}
+                                            spy={true}
+                                          >
+                                            {nestedsublink.name}
+                                          </ScrollLink>
+                                        ) : (
+                                          <Link
+                                            to={nestedsublink.link}
+                                            target={`${
+                                              this.openBlankTo(
+                                                nestedsublink.link
+                                              )
+                                                ? '_blank'
+                                                : ''
+                                            }`}
+                                          >
+                                            {nestedsublink.name}
+                                          </Link>
+                                        )}
                                       </li>
                                     ))}
                                   </ul>
@@ -315,24 +371,29 @@ class Header extends React.Component {
                                   display: `block`,
                                 }}
                               >
-                                {isHome && !this.openBlankTo(sublink.link)
-                                  ? <ScrollLink
-                                      class={this.replaceTo(sublink.link)}
-                                      to={this.replaceTo(sublink.link)}
-                                      smooth={true}
-                                      offset={50}
-                                      duration={1500}
-                                      spy={true}
-                                    >
-                                      {sublink.name}
-                                    </ScrollLink>
-                                  : <Link
-                                      to={sublink.link}
-                                      target={`${this.openBlankTo(sublink.link) ? '_blank' : ''}`}
-                                    >
-                                      {sublink.name}
-                                    </Link>
-                                }
+                                {isHome && !this.openBlankTo(sublink.link) ? (
+                                  <ScrollLink
+                                    class={this.replaceTo(sublink.link)}
+                                    to={this.replaceTo(sublink.link)}
+                                    smooth={true}
+                                    offset={50}
+                                    duration={1500}
+                                    spy={true}
+                                  >
+                                    {sublink.name}
+                                  </ScrollLink>
+                                ) : (
+                                  <Link
+                                    to={sublink.link}
+                                    target={`${
+                                      this.openBlankTo(sublink.link)
+                                        ? '_blank'
+                                        : ''
+                                    }`}
+                                  >
+                                    {sublink.name}
+                                  </Link>
+                                )}
                               </li>
                             )
                           )}
@@ -341,25 +402,28 @@ class Header extends React.Component {
                     </React.Fragment>
                   ) : (
                     <li key={link.name}>
-                      {isHome && !this.openBlankTo(link.link)
-                        ? <ScrollLink
-                            className={link.cl}
-                            to={this.replaceTo(link.link)}
-                            smooth={true}
-                            offset={50}
-                            duration={1500}
-                            spy={true}
-                          >
-                            {link.name}
-                          </ScrollLink>
-                        : <Link
-                            className={link.cl}
-                            to={link.link}
-                            target={`${this.openBlankTo(link.link) ? '_blank' : ''}`}
-                          >
-                            {link.name}
-                          </Link>
-                      }
+                      {isHome && !this.openBlankTo(link.link) ? (
+                        <ScrollLink
+                          className={link.cl}
+                          to={this.replaceTo(link.link)}
+                          smooth={true}
+                          offset={50}
+                          duration={1500}
+                          spy={true}
+                        >
+                          {link.name}
+                        </ScrollLink>
+                      ) : (
+                        <Link
+                          className={link.cl}
+                          to={link.link}
+                          target={`${
+                            this.openBlankTo(link.link) ? '_blank' : ''
+                          }`}
+                        >
+                          {link.name}
+                        </Link>
+                      )}
                     </li>
                   )
                 )}

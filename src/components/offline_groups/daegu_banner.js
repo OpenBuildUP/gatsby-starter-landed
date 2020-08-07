@@ -18,16 +18,19 @@ const OfflineGroupsDaeguBanner = props => (
           <h2>Offline Group - Daegu!</h2>
           <p>
             대구 오프라인 모임&nbsp;
-            <a href="https://www.meetup.com/ko-KR/Open-Build-UP/" target="_blank">
+            <a
+              href="https://www.meetup.com/ko-KR/Open-Build-UP/"
+              target="_blank"
+            >
               (Meetup 방문하기)
             </a>
           </p>
         </header>
         <p>
-          - &lt;Open Build-UP&gt; 의 첫 번째 오프라인 모임입니다. <br/>
-          - 현재는 &lt;Meetup&gt;을 통해 행사정보를 공지합니다. <br/>
-          - 2020년 09월, 첫 번째 모임 진행 <br/>
-          - 2020년 08월, 모임 생성 <br/>
+          - &lt;Open Build-UP&gt; 의 첫 번째 오프라인 모임입니다. <br />
+          - 현재는 &lt;Meetup&gt;을 통해 행사정보를 공지합니다. <br />
+          - 2020년 09월, 첫 번째 모임 진행 <br />
+          - 2020년 08월, 모임 생성 <br />
         </p>
         <ul className="actions">
           <li>
@@ -39,7 +42,7 @@ const OfflineGroupsDaeguBanner = props => (
       </div>
     </Fade>
     <ScrollLink
-      to= {props.next}
+      to={props.next}
       className="goto-next"
       activeClass="active"
       smooth={true}

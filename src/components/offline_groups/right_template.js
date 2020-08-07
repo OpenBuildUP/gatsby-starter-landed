@@ -34,7 +34,7 @@ const One = props => (
       </div>
     </Fade>
     <ScrollLink
-      to= {props.next}
+      to={props.next}
       className="goto-next"
       activeClass="active"
       smooth={true}

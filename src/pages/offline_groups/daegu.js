@@ -5,7 +5,7 @@ import pic05 from '../../assets/images/pic05.jpg'
 import pic06 from '../../assets/images/pic06.jpg'
 
 const OfflineGroupsDaegu = props => (
-  <Layout location='/offline_groups/daegu'>
+  <Layout location="/offline_groups/daegu">
     <Helmet>
       <title>Offline Group - Daegu!</title>
       <meta name="description" content="Offline Group - Daegu! page" />
@@ -17,7 +17,10 @@ const OfflineGroupsDaegu = props => (
           <h2>Offline Group - Daegu!</h2>
           <p>
             대구 오프라인 모임&nbsp;
-            <a href="https://www.meetup.com/ko-KR/Open-Build-UP/" target="_blank">
+            <a
+              href="https://www.meetup.com/ko-KR/Open-Build-UP/"
+              target="_blank"
+            >
               (Meetup 방문하기)
             </a>
           </p>
@@ -27,9 +30,7 @@ const OfflineGroupsDaegu = props => (
             <section id="sidebar">
               <section>
                 <h3>A 테스트</h3>
-                <p>
-                  짧은 글 (테스트)...
-                </p>
+                <p>짧은 글 (테스트)...</p>
                 <footer>
                   <ul className="actions">
                     <li>
@@ -46,9 +47,7 @@ const OfflineGroupsDaegu = props => (
                   <img src={pic06} alt="" />
                 </a>
                 <h3>B 테스트</h3>
-                <p>
-                  짧은 글 (테스트)...
-                </p>
+                <p>짧은 글 (테스트)...</p>
                 <footer>
                   <ul className="actions">
                     <li>
@@ -67,16 +66,10 @@ const OfflineGroupsDaegu = props => (
                 <img src={pic05} alt="" />
               </a>
               <h3>C 테스트</h3>
-              <p>
-                문단 테스트 001
-              </p>
-              <p>
-                문단 테스트 002
-              </p>
+              <p>문단 테스트 001</p>
+              <p>문단 테스트 002</p>
               <h3>H3 테스트</h3>
-              <p>
-                문단 테스트 003
-              </p>
+              <p>문단 테스트 003</p>
               <ul>
                 <li>li 테스트 001</li>
                 <li>li 테스트 002</li>
